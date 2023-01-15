@@ -1,0 +1,32 @@
+Part 1: Installation of EB CLI
+
+sudo su -
+apt-get update
+apt install python3-pip unzip
+pip install --upgrade --user awsebcli
+export PATH=$PATH:~/.local/bin/
+
+
+Part 2: Deploy Application using EB CLI:
+
+mkdir eb-app
+cd eb-app
+wget https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/samples/php.zip
+rm -f php.zip
+eb init
+eb create --single
+eb events
+eb health
+eb logs --all
+eb terminate
+
+
+Part 3: Verification
+
+Run these commands after connecting to the EC2 instance via SSH.
+
+rpm -qa | grep vsftpd
+systemctl status vsftpd
+cat /tmp/test.txt
+cat /etc/passwd | grep myuser
+cat /etc/group | grep groupOne
